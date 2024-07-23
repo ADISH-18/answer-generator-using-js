@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Query Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top:10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select, input[type="text"], button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #004a98;
+            color: white;
+            border: none;
+            margin:10px;
+            width: 130px;
+            transition: background-color 0.3s;
+        }
+
+        .buttons{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        button:hover {
+            background-color: #002c5c;
+        }
+
+        .legend {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .legend img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 85px;
+            height: 85px;
+        }
+
+        .legend h2 {
+            margin: 0;
+        }
+
+        .answer {
+            margin-top: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="legend">
+                <img src="https://wallpapers.com/images/hd/plant-creature-random-pfp-vmp5mjq6clcyyb2t.jpg" alt="Profile Picture">
+                <h2>Ask Me Anything</h2>
+            </div>
+            <form id="questionForm" onsubmit="displayAnswer(event)">
+                <label for="ask">Ask me something</label>
+                <select name="question" id="question">
+                    <option value="">Select a question...</option>
+                    <option value="1">Which planet in our solar system has the most moons?</option>
+                    <option value="2">Who is the author of the epic poem 'Paradise Lost'?</option>
+                    <option value="3">In which year did the Berlin Wall fall?</option>
+                    <option value="4">What is the largest bone in the human body?</option>
+                    <option value="5">Which ancient civilization built the Machu Picchu complex in Peru?</option>
+                    <option value="6">What is the smallest country in the world by land area?</option>
+                    <option value="7">Who painted the famous artwork 'The Persistence of Memory'?</option>
+                    <option value="8">In which year was the United Nations established?</option>
+                    <option value="9">What is the capital city of Australia?</option>
+                    <option value="10">Who developed the theory of General Relativity?</option>
+                </select>
+                <div id="answer" class="answer"></div>
+                <label for="query">Have another query?</label>
+                <input type="text" id="query" name="query" placeholder="Type your query here">
+                <div class="buttons">
+                <button type="submit">View Answer</button>
+                <button type="reset" onclick="resetForm()">Reset</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        const answers = {
+            "1": "Saturn",
+            "2": "John Milton",
+            "3": "1989",
+            "4": "Femur (thigh bone)",
+            "5": "The Inca Civilization",
+            "6": "Vatican City",
+            "7": "Salvador Dalí",
+            "8": "1945",
+            "9": "Canberra",
+            "10": "Albert Einstein"
+        };
+
+        function displayAnswer(event) {
+            event.preventDefault();
+            const questionSelect = document.getElementById('question');
+            const answerDiv = document.getElementById('answer');
+            const selectedQuestion = questionSelect.value;
+            if (selectedQuestion) {
+            answerDiv.innerHTML = 'Answer: ' + answers[selectedQuestion];
+        } else {
+            answerDiv.innerHTML = '';
+        }
+        }
+        function resetForm() {
+        const form = document.getElementById('questionForm');
+        form.reset();
+        document.getElementById('answer').innerHTML = '';
+    }
+    </script>
+</body>
+
+</html>
